@@ -5,46 +5,51 @@ date: "today"
 format: pdf
 editor: visual
 jupyter: python3
-
 ---
 
 # Data Structures
-## Question 1a
 
+## Question 1a
 
 #### Given list s = “Hamburg”, how do you index/slice “mbur” from list s?
 
-In order to slice the character is at mburg out of hamburg, you have to first note where the charcters are.^[Since python like many programming languages start counting from 0 you have to account for that when slicing a matrix of anything.] since `m` is at the 2nd position,`b` is in position 3,`u` is in position 4 and `r` is at position 5. 
+In order to slice the character is at mburg out of hamburg, you have to first note where the charcters are.[^1] since `m` is at the 2nd position,`b` is in position 3,`u` is in position 4 and `r` is at position 5.
+
+[^1]: Since python like many programming languages start counting from 0 you have to account for that when slicing a matrix of anything.
+
 ```{python}
 s = "hamburg"
 substring = s[2:6]
 print(substring)  # Output: "mbur"
 ```
 
-
 ## Question 1b
 
 #### What the major differences between two Python data structures: **list** and **set**. Give a or two application examples where we might need to convert a list to a set.
 
 List
-: *Maintains the order* if elements and allows you to index via normal means. Can also contain duplicate elements.
+
+:   *Maintains the order* if elements and allows you to index via normal means. Can also contain duplicate elements.
 
 Set
-: *Unordered* collection of elements. Does *not* support indexing or slicing since the order is not guaranteed. Automatically removes the duplicate elements since each one is unique
+
+:   *Unordered* collection of elements. Does *not* support indexing or slicing since the order is not guaranteed. Automatically removes the duplicate elements since each one is unique
 
 ##### Application examples for converting a list to a set
-1. **Removing Duplicates** For instance if you have a bunch of email addresses in your list and you want to include only unique entries
-2. **Membership Testing** If you want to frequently check whether an element exists within a collection, if you convert the list to a set this can reduce run time and improve performance
-   
-   
+
+1.  **Removing Duplicates** For instance if you have a bunch of email addresses in your list and you want to include only unique entries
+2.  **Membership Testing** If you want to frequently check whether an element exists within a collection, if you convert the list to a set this can reduce run time and improve performance
+
 ## Question 1c
 
-#### If you are working with a toy dataset as show in following 
+#### If you are working with a toy dataset as show in following
+
 | **student_id** | **gpa** |
-|:-----|---------|
-|  001 |    4.6   |    4.6  |
-|  002 |   4.2   |   4.2  |
-|  003 |     4.0   |     4.0  |
+|:---------------|---------|
+| 001            | 4.6     |
+| 002            | 4.2     |
+| 003            | 4.0     |
+
 #### and you want to use a `dictionary` to store the data for further processing. Write Python code to demonstrate how to create such a `dictionary` in Python, and to iterate over the `key`: `value` pairs.
 
 ```{python}
@@ -63,24 +68,25 @@ for student_id, gpa in gpa_dict.items():
     a list of the key-value tuple pairs. Tuples are also immutable compared to 
     lists'''
 ```
+
 **This code will print each of the student ID's along with their GPA**
 
 # Function and library
 
 ## Question 2a Write a Python function to calculate the Euclidean distance between two data points `x` and `y`.
-The Euclidean distance between two data points 𝐱 = [𝑥1, 𝑥2, … , 𝑥𝑛] and 𝐲 = [𝑦1, 𝑦2, … , 𝑦𝑛] is
-defined as 
- **Euclidean Distance Formula**
 
-The Euclidean distance between two data points  
-$\mathbf{x} = [x_1, x_2, \dots, x_n]$  
-and  
-$\mathbf{y} = [y_1, y_2, \dots, y_n]$  
+The Euclidean distance between two data points 𝐱 = \[𝑥1, 𝑥2, … , 𝑥𝑛\] and 𝐲 = \[𝑦1, 𝑦2, … , 𝑦𝑛\] is defined as **Euclidean Distance Formula**
+
+The Euclidean distance between two data points\
+$\mathbf{x} = [x_1, x_2, \dots, x_n]$\
+and\
+$\mathbf{y} = [y_1, y_2, \dots, y_n]$\
 is defined as:
 
 $$
 d(\mathbf{x}, \mathbf{y}) = \sqrt{\sum_{k=1}^{n} (x_k - y_k)^2}
 $$
+
 ```{python}
 import math # importing for math operations
 
@@ -108,6 +114,7 @@ print("Euclidean distance:", distance)
 # Numpy and Pandas
 
 ## Question 3a create a 10x10 array with random numbers, and name it as `np_data`. Print out the array.
+
 ```{python}
 import numpy as np
 import pandas as pd
@@ -121,8 +128,8 @@ print(np_data)
 
 ```
 
-
 ## Question 3a Part II slice the sub-array of 6th-10th rows, 1st-5th columns of `np_data`, and name it as `subdata` (`subdata` should be a 5x5 array). Print out the sub-array.
+
 ```{python}
 #    Since Python uses zero-based indexing as mentioned earlier:
 #    - 6th to 10th rows correspond to indices 5 to 9.
@@ -132,7 +139,6 @@ print("\nSub-array (6th-10th rows, 1st-5th columns):")
 print(subdata)
 
 ```
-
 
 ## Question 3b create a `Pandas DataFrame` from `np_data` above, and name it as `pd_data`. Print out `pd_data`. Then slice the sub-DataFrame of 1st-5th rows, 6th-10th columns of `pd_data`, and name it as `subdf` (`subdf` should be a 5x5 dataframe). Print out `subdf`.
 
@@ -149,8 +155,7 @@ print(subdf)
 
 ```
 
-
-I use *iloc* because I wanted to select rows and columns based on their order in the df rather than their labels. It's like slicing a list. e.g df.iloc[0:5] gives you the first 5 rows. df.iloc[:, 5:10] gives you the columns in positions 6 through 10.
+I use *iloc* because I wanted to select rows and columns based on their order in the df rather than their labels. It's like slicing a list. e.g df.iloc\[0:5\] gives you the first 5 rows. df.iloc\[:, 5:10\] gives you the columns in positions 6 through 10.
 
 # Tabular data
 
@@ -202,5 +207,5 @@ for attr in attributes:
     plt.tight_layout()
     plt.show()
 ```
-This code first prints out a summary of all the data so you can see basic stats like the average and spread for each column. Then, it creates simple bar graphs (histograms) for three specific columns (PPE, DFA, and MDVP:Fo(Hz)) to show how the data values are distributed. Finally, it splits the data into two groups based on whether the person has Parkinson’s (status = 1) or is healthy (status = 0) and makes separate histograms for each group. This makes it easier to compare how the numbers differ between the two groups.
 
+This code first prints out a summary of all the data so you can see basic stats like the average and spread for each column. Then, it creates simple bar graphs (histograms) for three specific columns (PPE, DFA, and MDVP:Fo(Hz)) to show how the data values are distributed. Finally, it splits the data into two groups based on whether the person has Parkinson’s (status = 1) or is healthy (status = 0) and makes separate histograms for each group. This makes it easier to compare how the numbers differ between the two groups.
